@@ -1,0 +1,81 @@
+apiVersion: apps/v1beta1
+
+kind: Deployment
+
+metadata:
+
+  name: fe-microservice-akka-deployment
+
+spec:
+
+  replicas: 3 # tells deployment to run 3 pods matching the template
+
+  template: # create pods using pod definition in this template
+
+    metadata:
+
+      labels:
+
+        app: refel
+
+        tier: backend
+
+        stack: akka
+
+        serves: http
+
+    spec:
+
+      containers:
+
+      - name: fe-microservice-akka
+
+        image: gcr.io/heroic-alpha-195822/a2censo-estadisticas:latest
+
+        ports:
+
+        - containerPort: 5000
+
+        resources:
+
+          requests:
+
+            cpu: 100m
+
+            memory: 100Mi
+
+        env:
+
+        - name: GET_HOSTS_FROM
+
+          value: dns
+
+---
+
+apiVersion: v1
+
+kind: Service
+
+metadata:
+
+  name: fe-microservice-akka-service
+
+spec:
+
+  type: LoadBalancer
+
+  selector:
+
+    app: marketPlace
+
+    tier: backend
+
+    serves: http
+
+  ports:
+
+    - protocol: TCP
+
+      port: 80
+
+      targetPort: 5000
