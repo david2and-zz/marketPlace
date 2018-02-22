@@ -5,6 +5,7 @@ metadata:
   labels:
     app: marketPlace
 spec:
+  replicas: 3 # tells deployment to run 3 pods matching the template
   template:
     metadata:
       labels:
@@ -12,7 +13,7 @@ spec:
     spec:
       containers:
         - name: mp-microservice-akka
-          image: gcr.io/heroic-alpha-195822/a2censo-estadisticas
+          image: gcr.io/heroic-alpha-195822/a2censo-estadisticas:latest
           ports:
             - containerPort: 5000
           env:
