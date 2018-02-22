@@ -2,13 +2,15 @@ apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: marketPlace-deployment
+  labels:
+    app: marketPlace-deployment
 spec:
   replicas: 3 # tells deployment to run 3 pods matching the template
   template:
     metadata:
       labels:
-        app: wordpress
-		tier: backend
+        app: marketPlace-deployment
+        tier: backend
         stack: akka
         serves: http
     spec:
