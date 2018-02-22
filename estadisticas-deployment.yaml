@@ -16,7 +16,7 @@ spec:
 
       labels:
 
-        app: refel
+        app: marketPlace
 
         tier: backend
 
@@ -28,9 +28,9 @@ spec:
 
       containers:
 
-      - name: fe-microservice-akka
+      - name: mp-microservice-akka
 
-        image: gcr.io/heroic-alpha-195822/a2censo-estadisticas:latest
+        image: gcr.io/heroic-alpha-195822/a2censo-estadisticas
 
         ports:
 
@@ -58,7 +58,7 @@ kind: Service
 
 metadata:
 
-  name: fe-microservice-akka-service
+  name: mp-microservice-akka-service
 
 spec:
 
