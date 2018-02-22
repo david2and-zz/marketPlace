@@ -1,7 +1,7 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: marketPlace-deployment
+  name: market-place-deployment
   labels:
     app: marketPlace
 spec:
@@ -58,7 +58,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mp-microservice-akka-service
+  name: market-place-service
 spec:
   type: LoadBalancer
   selector:
