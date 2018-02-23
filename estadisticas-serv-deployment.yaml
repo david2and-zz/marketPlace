@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: mp-microservice-akka
-        image: gcr.io/heroic-alpha-195822/a2censo-estadisticas:latest
+        image: gcr.io/heroic-alpha-195822/a2censo-estadisticas-db:latest
         ports:
         - containerPort: 5000
         resources:

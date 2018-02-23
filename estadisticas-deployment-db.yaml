@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: mp-microservice-akka
-        image: gcr.io/heroic-alpha-195822/a2censo-estadisticas:latest
+        image: gcr.io/heroic-alpha-195822/a2censoapplication:latest
         ports:
         - containerPort: 5000
         resources:
@@ -24,12 +24,12 @@ spec:
         env:
         - name: GET_HOSTS_FROM
           value: 127.0.0.1:3306
-        - name: A2CENSO_DB_USER
+        - name: DB_USER
           valueFrom:
             secretKeyRef:
               name: cloudsql-db-credentials
               key: username
-        - name: A2CENSO_DB_PASSWORD
+        - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
               name: cloudsql-db-credentials
@@ -37,7 +37,7 @@ spec:
       - name: cloudsql-proxy
         image: gcr.io/cloudsql-docker/gce-proxy:1.11
         command: ["/cloud_sql_proxy",
-                  "-instances=heroic-alpha-195822:us-central1:a2censo=tcp:3306",
+                  "-instances=market-place-a2censo:us-central1:a2censo=tcp:3306",
                   "-credential_file=/secrets/cloudsql/credentials.json"]
         volumeMounts:
           - name: cloudsql-instance-credentials
